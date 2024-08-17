@@ -1,0 +1,25 @@
+services:
+  sleekflowtodo.server:
+    image: ${DOCKER_REGISTRY-}sleekflowtodoserver
+    container_name: sleekflowtodo.server
+    build:
+      context: .
+      dockerfile: SleekFlowTodo.Server/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+
+  sleekflowtodo.database:
+    image: postgres:latest
+    container_name: sleekflowtodo.database
+    environment:
+        - POSTGRES_DB=sleekflowtodo
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    volumes:
+        - ./.containers/sleekflowtodo-db:/var/lib/postgressql/data
+    ports:
+        - 5432:5432
+
+
+ 
