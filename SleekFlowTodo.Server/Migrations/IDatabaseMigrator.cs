@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SleekFlowTodo.Server.Common;
-using System.Runtime.CompilerServices;
+﻿using SleekFlowTodo.Server.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace SleekFlowTodo.Server.Migrations
 {

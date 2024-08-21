@@ -8,14 +8,14 @@ namespace SleekFlowTodo.Server.Models
         required public Guid Id { get; set; }
         required public string Name { get; set; }
         required public string Description { get; set; }
-        required public DateTime DueDate { get; set; }
+        required public DateOnly DueDate { get; set; }
         required public Status Status { get; set; }
     }
 
     public enum Status
     {
-        NotStarted, 
-        InProgress, 
+        NotStarted,
+        InProgress,
         Completed,
     }
 }

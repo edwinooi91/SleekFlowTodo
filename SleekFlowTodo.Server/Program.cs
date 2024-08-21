@@ -1,7 +1,6 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using SleekFlowTodo.Server.Common;
 using SleekFlowTodo.Server.Migrations;
+using SleekFlowTodo.Server.Repositories;
 
 namespace SleekFlowTodo.Server
 {
@@ -21,6 +20,7 @@ namespace SleekFlowTodo.Server
                 .AddDbContext<ApplicationDbContext>()
                 .AddDbContext<SettingsDbContext>();
             builder.Services.AddScoped<IDatabaseMigrator, DatabaseMigrator>();
+            builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
             var app = builder.Build();
 
@@ -41,8 +41,7 @@ namespace SleekFlowTodo.Server
 
             app.UseAuthorization();
 
-
-            app.MapControllers();
+            app.MapDefaultControllerRoute();
 
             app.MapFallbackToFile("/index.html");
 
